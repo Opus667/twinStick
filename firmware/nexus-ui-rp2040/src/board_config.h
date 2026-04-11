@@ -29,4 +29,24 @@
 #define HOJA_I2C_INST       i2c0
 #define HOJA_BASEBAND_ADDR  0x50
 
+// --- Configuração de I2C (Necessário para o Bluetooth ESP32) ---
+#define HOJA_I2C_BUS        i2c0        // Ou i2c1, dependendo da sua trilha
+#define HOJA_I2C_SDA        0           // Pino GPIO para SDA
+#define HOJA_I2C_SCL        1           // Pino GPIO para SCL
+#define HOJA_I2C_SPEED      400000      // 400kHz
+
+// --- Configuração de SPI (Necessário para o Driver MCP3002) ---
+// Se você não estiver usando um chip MCP3002 externo, podemos desativar o driver.
+// Mas para compilar agora, defina os pinos básicos:
+#define HOJA_SPI_BUS        spi0
+#define HOJA_SPI_SCK        18
+#define HOJA_SPI_MOSI       19
+#define HOJA_SPI_MISO       16
+#define HOJA_SPI_CS         17
+
+// --- Aliases que os drivers da HOJA procuram ---
+#define i2c_instance        HOJA_I2C_BUS
+#define spi_instance        HOJA_SPI_BUS
+#define cs_gpio             HOJA_SPI_CS
+
 #endif
